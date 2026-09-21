@@ -14,3 +14,11 @@ instruments_fno.csv
 strike_map*.json
 real_nifty_options.json
 nifty_options_priority.json
+*.md
+*.docx
+*.pdf
+*.tex
+*.txt
+
+!README.md
+!DISCLAIMER.md
