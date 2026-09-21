@@ -1,0 +1,16 @@
+# Data (NSE licensing)
+data/
+*.csv
+!results/*.csv
+# Credentials
+*token*
+*secret*
+*.env
+.env*
+*credentials*
+broker_api.py
+trade_log.*
+instruments_fno.csv
+strike_map*.json
+real_nifty_options.json
+nifty_options_priority.json
