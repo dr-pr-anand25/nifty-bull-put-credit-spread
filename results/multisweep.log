@@ -1,0 +1,68 @@
+nohup: ignoring input
+Data: 1829 daily bars, 2019-01-03 to 2026-07-01
+
+Running 192 combinations...
+
+====================================================================================================
+TOP 10 BY SHARPE RATIO
+====================================================================================================
+delta=0.20  hold=30  stop=99.0  regime=loose  vix>0.5  | n= 18  win%=83.3  avg=Rs+3325  total=Rs+59859  Sharpe=2.56  DD=-2.3%
+delta=0.20  hold=30  stop=99.0  regime=tight  vix>0.5  | n= 18  win%=83.3  avg=Rs+3325  total=Rs+59859  Sharpe=2.56  DD=-2.3%
+delta=0.20  hold=30  stop= 3.0  regime=tight  vix>0.5  | n= 18  win%=83.3  avg=Rs+3325  total=Rs+59859  Sharpe=2.56  DD=-2.3%
+delta=0.20  hold=30  stop= 3.0  regime=loose  vix>0.5  | n= 18  win%=83.3  avg=Rs+3325  total=Rs+59859  Sharpe=2.56  DD=-2.3%
+delta=0.30  hold=20  stop=99.0  regime=tight  vix>0.0  | n=212  win%=80.2  avg=Rs+2057  total=Rs+436007  Sharpe=1.41  DD=-35.1%
+delta=0.30  hold=20  stop=99.0  regime=loose  vix>0.0  | n=212  win%=80.2  avg=Rs+2057  total=Rs+436007  Sharpe=1.41  DD=-35.1%
+delta=0.20  hold=20  stop= 3.0  regime=loose  vix>0.5  | n= 18  win%=77.8  avg=Rs+2277  total=Rs+40991  Sharpe=1.35  DD=-3.2%
+delta=0.20  hold=20  stop= 3.0  regime=tight  vix>0.5  | n= 18  win%=77.8  avg=Rs+2277  total=Rs+40991  Sharpe=1.35  DD=-3.2%
+delta=0.20  hold=20  stop=99.0  regime=tight  vix>0.5  | n= 18  win%=77.8  avg=Rs+2277  total=Rs+40991  Sharpe=1.35  DD=-3.2%
+delta=0.20  hold=20  stop=99.0  regime=loose  vix>0.5  | n= 18  win%=77.8  avg=Rs+2277  total=Rs+40991  Sharpe=1.35  DD=-3.2%
+
+====================================================================================================
+BOTTOM 10 BY SHARPE RATIO
+====================================================================================================
+delta=0.20  hold=15  stop= 2.0  regime=tight  vix>0.5  | n= 18  win%=55.6  avg=Rs-1406  total=Rs-25309  Sharpe=-0.38  DD=-38.3%
+delta=0.20  hold=15  stop= 2.0  regime=loose  vix>0.5  | n= 18  win%=55.6  avg=Rs-1406  total=Rs-25309  Sharpe=-0.38  DD=-38.3%
+delta=0.25  hold=30  stop= 1.5  regime=tight  vix>0.5  | n= 18  win%=44.4  avg=Rs-1750  total=Rs-31508  Sharpe=-0.41  DD=-49.3%
+delta=0.25  hold=30  stop= 1.5  regime=loose  vix>0.5  | n= 18  win%=44.4  avg=Rs-1750  total=Rs-31508  Sharpe=-0.41  DD=-49.3%
+delta=0.20  hold=10  stop= 2.0  regime=loose  vix>0.0  | n=212  win%=67.0  avg=Rs-375  total=Rs-79456  Sharpe=-0.43  DD=-90.4%
+delta=0.20  hold=10  stop= 2.0  regime=tight  vix>0.0  | n=212  win%=67.0  avg=Rs-375  total=Rs-79456  Sharpe=-0.43  DD=-90.4%
+delta=0.20  hold=15  stop= 2.0  regime=tight  vix>0.0  | n=212  win%=67.0  avg=Rs-481  total=Rs-101866  Sharpe=-0.47  DD=-100.9%
+delta=0.20  hold=15  stop= 2.0  regime=loose  vix>0.0  | n=212  win%=67.0  avg=Rs-481  total=Rs-101866  Sharpe=-0.47  DD=-100.9%
+delta=0.30  hold=30  stop= 1.5  regime=loose  vix>0.5  | n= 18  win%=38.9  avg=Rs-3398  total=Rs-61171  Sharpe=-0.59  DD=-74.8%
+delta=0.30  hold=30  stop= 1.5  regime=tight  vix>0.5  | n= 18  win%=38.9  avg=Rs-3398  total=Rs-61171  Sharpe=-0.59  DD=-74.8%
+
+====================================================================================================
+SUMMARY STATISTICS
+====================================================================================================
+  Combinations tested:    192
+  Positive avg P&L:       112
+  Negative avg P&L:       80
+  Sharpe > 0.5:           54
+  Sharpe > 1.0:           28
+  Median Sharpe:          0.117
+  Median avg P&L:         Rs +161
+  Best Sharpe:            2.563
+  Worst Sharpe:           -0.594
+
+STOP-LOSS EFFECT (median across all other params):
+  stop=1.5x  n_combos= 48  median_Sharpe=-0.079  median_avg=Rs-148  median_worst=Rs-13281
+  stop=2.0x  n_combos= 48  median_Sharpe=-0.035  median_avg=Rs-73  median_worst=Rs-17166
+  stop=3.0x  n_combos= 48  median_Sharpe=0.407  median_avg=Rs+710  median_worst=Rs-17166
+  stop=99.0x  n_combos= 48  median_Sharpe=0.395  median_avg=Rs+704  median_worst=Rs-18590
+
+VIX RANK FILTER EFFECT:
+  vix>0.0  n_combos= 96  median_Sharpe=0.244  median_avg=Rs+294
+  vix>0.5  n_combos= 96  median_Sharpe=-0.010  median_avg=Rs-31
+
+DELTA EFFECT:
+  delta=0.20  median_Sharpe=-0.025  median_avg=Rs-32
+  delta=0.25  median_Sharpe=0.126  median_avg=Rs+259
+  delta=0.30  median_Sharpe=0.217  median_avg=Rs+708
+
+HOLD PERIOD EFFECT:
+  hold=10  median_Sharpe=-0.032  median_avg=Rs-84
+  hold=15  median_Sharpe=0.189  median_avg=Rs+492
+  hold=20  median_Sharpe=0.933  median_avg=Rs+1270
+  hold=30  median_Sharpe=0.260  median_avg=Rs+532
+
+Saved detailed results to results/multisweep.csv
