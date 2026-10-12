@@ -157,6 +157,10 @@ The structure is:
 
 The rationale for the 1000-strike choice is that it is far enough out of the money to be cheap but close enough to provide meaningful protection during a moderate correction. We also test hedge strikes of 500 and 1500 to verify robustness.
 
+![Strike structure of the same-expiry hedge. A short put at K₁ (delta 0.30), a long put at K₂ = K₁ − 500, and a hedge put at K₃ = K₂ − 1000.](figures/fig1_strike_structure.png)
+
+*Figure 1: Strike Structure of the Same-Expiry Hedge.*
+
 #### 3.3.2 Weekly Rolling Hedge
 
 A 7-day put is purchased at the same strike as the same-expiry hedge (K₃). The put is rolled every 5 trading days. At each roll, the old put is sold at its current market value and a new 7-day put at the same strike is purchased.
@@ -170,11 +174,22 @@ The structure is:
 
 The rationale is that short-dated puts are cheaper than longer-dated puts, so rolling may reduce total premium. The countervailing concern is gap risk.
 
+![Weekly rolling hedge timeline. A 7-day put rolled every 5 trading days over a 20-day hold, leaving weekends unprotected.](figures/fig2_rolling_timeline.png)
+
+*Figure 2: Weekly Rolling Hedge Timeline.*
+
 #### 3.3.3 Laddered Hedge
 
 Four puts are purchased at entry, with expiries at 7, 14, 21, and 28 days. All are at strike K₃. Each put is held to its expiry (where it is settled at intrinsic value) or to the trade close (where it is sold at market value). No rolling is performed.
 
 The rationale is that the ladder provides continuous coverage across the hold period without roll risk. The trade-off is higher upfront cost.
+
+
+![Laddered hedge coverage timeline. Four puts at 7, 14, 21, and 28 days to expiry provide continuous coverage over the 20-day hold.](figures/fig3_ladder_timeline.png)
+
+*Figure 3: Laddered Hedge Coverage Timeline.*
+
+> **Footnote.** Two hedge-hold conventions are tested in the accompanying code. `backtest_weekly_hedge.py` closes the hedge at the same time as the credit spread (20-day hold) and is the script that produces the Config D result reported in this paper. `backtest_hedged.py` uses a different convention in which the hedge is held to its natural 30-day expiry; its Config D configuration produces a Sharpe of 3.508 with a larger drawdown (−15.3%). This paper reports only the first convention. The two are labeled clearly in the repository to avoid confusion.
 
 ### 3.4 Transaction Cost Model for Hedged Structures
 
@@ -291,6 +306,10 @@ First, gap risk. The strategy rolls the hedge every 5 trading days. Over a 20-da
 
 Second, roll costs. Each roll incurs ₹20 brokerage plus 0.5% slippage on the new put. Over 4 rolls, this adds approximately ₹200 per trade, which is around 10% of the typical credit received. The cumulative cost erodes the strategy's edge.
 
+![Gap risk failure in weekly rolling hedges. A NIFTY gap down over the weekend leaves the position unprotected because the Friday hedge has expired and the Monday hedge is purchased after the gap.](figures/fig4_gap_risk.png)
+
+*Figure 4: Gap Risk Failure in Weekly Rolling Hedges.*
+
 ### 4.6 Why Laddered Hedges Underperform
 
 The laddered hedge produces higher total P&L than the baseline and a lower drawdown, but its Sharpe ratio is lower than the same-expiry hedge. The reason is higher volatility of returns.
@@ -336,7 +355,7 @@ The finding that simpler hedges outperform more complex ones after transaction c
 
 To address the concern that the strategy's performance may be concentrated in a single market regime, we partitioned the 7.5-year sample into four independent sub-periods representing distinct market conditions: a low-volatility pre-pandemic regime (2019), the COVID crisis and subsequent recovery (2020–21), a high-volatility trending-down regime (2022), and a lower-volatility post-2023 period (2023–2026). Table X reports the results.
 
-**Table X: Sub-period performance of the recommended hedged configuration (1500-point same-expiry long put)**
+**Table X: Sub-period performance of the recommended hedged configuration (1000-point same-expiry long put)**
 
 | Period | Market condition | N | Win rate | Total P&L |
 | --- | --- | --- | --- | --- |
@@ -349,7 +368,7 @@ To address the concern that the strategy's performance may be concentrated in a 
 
 The recommended hedged configuration is profitable in every sub-period. The win rate declined from 94% (2019–2022) to 72% (2023–2026), consistent with the reduction in implied volatility over this period following SEBI's 2025 weekly-expiry restructuring. Despite this, total P&L remains strongly positive in the later period (+₹1,33,335 over 3.5 years), and the strategy does not rely on any single regime for its cumulative performance. The absence of a losing sub-period suggests the edge derives from the structural volatility risk premium rather than from regime-specific anomalies.
 
-We additionally tested a conditional variant of the hedge overlay in which the long put was activated only when the entry-day VIX percentile exceeded thresholds of 0.40, 0.50, or 0.60. All three conditional variants produced lower Sharpe ratios (3.17–3.23) and larger drawdowns (−₹84,917 to −₹88,731) than the unconditional hedge (Sharpe 4.29, DD −₹63,758 on the same metric scale). The unconditional hedge is therefore retained.
+We also tested a conditional variant in which the long put was activated only when the entry-day VIX percentile exceeded thresholds of 0.40, 0.50, or 0.60. All three variants underperformed the unconditional hedge on Sharpe ratio. The unconditional hedge is retained.
 
 ### 5.6 Limitations
 
@@ -391,9 +410,8 @@ The practical implication for traders is that a single same-expiry long put is t
 
 ## Data and Code Availability
 
-All simulation code and derived data are available at https://github.com/dr-pr-anand25/nifty-bull-put-credit-spread. The hedge simulation scripts and trade logs are in the `/paper7/` directory. Raw NSE data is available from NSE archives subject to their licensing terms.
 
----
+All simulation code and derived data are available at https://github.com/dr-pr-anand25/nifty-bull-put-credit-spread. The Config D result reported in this paper (Sharpe 2.835, maximum drawdown −4.9%, 193 trades) is produced by `paper7/backtest_weekly_hedge.py`. The summary output is in `paper7/results/weekly_hedge_comparison.csv`, and the per-trade log for Config D is in `paper7/results/config_d_trades.csv`. An alternative hedge-hold convention is implemented in `paper7/backtest_hedged.py` and reported in `paper7/results/hedge_comparison.csv`; it produces a higher Sharpe (3.508) but with a different drawdown profile and is not the configuration reported here. All numbers reported in this paper can be recomputed from the two files `paper7/results/weekly_hedge_comparison.csv` and `paper7/results/config_d_trades.csv`; recomputing Sharpe from the per-trade log with annualization by √(trades/year) reproduces the reported 2.835. Raw NSE data is available from NSE archives subject to their licensing terms.
 
 ## Author Contribution Statement
 
