@@ -1,0 +1,30 @@
+Paper 7 — Config D Statistical Significance Tests
+============================================================
+
+Sample size (trades)          : 193
+Span (years)                  : 7.05
+Trades per year               : 27.3759
+
+Mean per-trade P&L (Rs)       : 3955.20
+Std dev per-trade P&L (Rs)    : 7343.44
+t-statistic (H0: mean = 0)    : 7.4825
+Two-sided p-value (normal)    : 7.283063e-14
+
+Point Sharpe (full sample)    : 2.8181
+Bootstrap 95% CI lower        : 2.1649
+Bootstrap 95% CI upper        : 4.7466
+Bootstrap mean Sharpe         : 3.0185
+Bootstrap median Sharpe       : 2.8778
+
+Fraction of resamples Sharpe > 0  : 1.0000
+Fraction of resamples Sharpe > 1.0: 1.0000
+Fraction of resamples Sharpe > 2.0: 0.9936
+
+Interpretation
+------------------------------------------------------------
+The t-statistic of 7.48 is far above the conventional threshold of
+1.96 (p < 0.05). The 95% bootstrap confidence interval for the
+annualized Sharpe ratio excludes zero, excludes 1.0, and sits well
+above the thresholds conventionally considered economically
+meaningful. Every one of 10,000 resamples produced a positive Sharpe.
+The result is not an artefact of sampling variability.
