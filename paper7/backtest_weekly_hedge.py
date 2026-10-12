@@ -283,6 +283,9 @@ def main():
         if use_eq:
             tdf = apply_eq_stop(tdf.copy())
         m = metrics(tdf["pnl"].values)
+        if label.startswith("D —"):
+            tdf.to_csv(RESULTS / "config_d_trades.csv", index=False)
+            print(f"  wrote {len(tdf)} Config D trades to config_d_trades.csv")
         if m:
             m["config"] = label
             results.append(m)
