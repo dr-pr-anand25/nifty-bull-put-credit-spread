@@ -24,3 +24,9 @@ nifty_options_priority.json
 !DISCLAIMER.md
 !LICENSE.md
 !requirements.txt
+
+# Exploratory experiments, not reported in papers
+paper7/results/multi/
+paper7/results/multi_v2/
+paper7/results/multi_v3/
+paper7/results/hierarchical/
