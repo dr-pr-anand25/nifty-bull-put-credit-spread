@@ -1,0 +1,9 @@
+graph LR
+    A["NIFTY<br/>at entry"] --> B["Strike K1<br/>Short Put<br/>Delta 0.30"]
+    B --> C["Strike K2 = K1 - 500<br/>Long Put"]
+    C --> D["Strike K3 = K2 - 1000<br/>Hedge Put"]
+    
+    style A fill:#e1f5ff,stroke:#0288d1,stroke-width:2px
+    style B fill:#ffe1e1,stroke:#c62828,stroke-width:2px
+    style C fill:#e1ffe1,stroke:#2e7d32,stroke-width:2px
+    style D fill:#fff5e1,stroke:#ef6c00,stroke-width:2px

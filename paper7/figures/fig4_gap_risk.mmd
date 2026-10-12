@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant P as NIFTY Price
+    participant H as Hedge Status
+    
+    Note over P,H: Monday: Fresh hedge active
+    Note over P,H: Tue-Thu: Hedge active
+    Note over P,H: Friday close: Hedge expires
+    Note over P,H: WEEKEND - NO HEDGE
+    P->>H: Monday open: Market gaps down 2 percent
+    Note over P,H: Monday 9:20 - Buy new hedge - gap already happened
+    Note over P,H: Hedge failed to protect against the gap

@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant T as Trader
+    participant M as Market
+    
+    T->>M: Day 0: Buy 7-day put at K3
+    Note over T,M: Days 1-4: Hedge active
+    T->>M: Day 5: Sell old put, buy new 7-day put at K3
+    Note over T,M: Days 6-9: Hedge active
+    T->>M: Day 10: Sell old put, buy new 7-day put at K3
+    Note over T,M: Days 11-14: Hedge active
+    T->>M: Day 15: Sell old put, buy new 7-day put at K3
+    Note over T,M: Days 16-19: Hedge active
+    T->>M: Day 20: Close trade
+    Note over T,M: Roll costs: ~Rs 200 per trade
