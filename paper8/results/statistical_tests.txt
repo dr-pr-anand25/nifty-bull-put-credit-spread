@@ -1,0 +1,81 @@
+
+======================================================================
+Paper 8 (Selling) — STATISTICAL SIGNIFICANCE TESTS
+======================================================================
+Input file:  /root/paper8/results/config_trades.csv
+Rows:        1159
+Date range:  2022-01-03 to 2026-05-05
+Span:        4.334 years
+Configs:     ['A_paper5', 'B_static', 'C_adaptive', 'D_adaptive_plus_rule']
+
+======================================================================
+PER-CONFIGURATION STATISTICS
+======================================================================
+config                         n        mean         std    Sharpe    t-stat          p(2)             boot CI 95%
+A_paper5                     486     3834.80     4373.72    8.6442   19.3290    0.0000e+00         [6.941, 10.858]
+B_static                     221     2142.84     6477.06    2.1995    4.9182    8.7332e-07          [1.163, 3.610]
+C_adaptive                   226     2198.83     6470.25    2.2848    5.1089    3.2408e-07          [1.243, 3.711]
+D_adaptive_plus_rule         226     2198.83     6470.25    2.2848    5.1089    3.2408e-07          [1.243, 3.711]
+
+======================================================================
+BOOTSTRAP DISTRIBUTION PER CONFIGURATION
+======================================================================
+
+A_paper5:
+  Bootstrap mean Sharpe    : 8.7374
+  Bootstrap median Sharpe  : 8.6725
+  Fraction Sharpe > 0      : 1.0000
+  Fraction Sharpe > 1.0    : 1.0000
+
+B_static:
+  Bootstrap mean Sharpe    : 2.2713
+  Bootstrap median Sharpe  : 2.2292
+  Fraction Sharpe > 0      : 1.0000
+  Fraction Sharpe > 1.0    : 0.9876
+
+C_adaptive:
+  Bootstrap mean Sharpe    : 2.3525
+  Bootstrap median Sharpe  : 2.3061
+  Fraction Sharpe > 0      : 1.0000
+  Fraction Sharpe > 1.0    : 0.9925
+
+D_adaptive_plus_rule:
+  Bootstrap mean Sharpe    : 2.3525
+  Bootstrap median Sharpe  : 2.3061
+  Fraction Sharpe > 0      : 1.0000
+  Fraction Sharpe > 1.0    : 0.9925
+
+======================================================================
+PAIRWISE SHARPE DIFFERENCE TESTS (bootstrap)
+======================================================================
+
+A_paper5  vs  B_static
+  Observed Sharpe diff (base - other) = +6.4447
+  Bootstrap 95% CI for diff          = [-1.2438, +1.2346]
+  Two-sided p-value                  = 0.0000e+00
+
+A_paper5  vs  C_adaptive
+  Observed Sharpe diff (base - other) = +6.3594
+  Bootstrap 95% CI for diff          = [-1.2311, +1.2997]
+  Two-sided p-value                  = 0.0000e+00
+
+A_paper5  vs  D_adaptive_plus_rule
+  Observed Sharpe diff (base - other) = +6.3594
+  Bootstrap 95% CI for diff          = [-1.2311, +1.2997]
+  Two-sided p-value                  = 0.0000e+00
+
+======================================================================
+DIEBOLD-MARIANO TESTS (per-trade P&L difference)
+======================================================================
+
+A_paper5  vs  B_static
+  DM statistic  = +2.6649
+  Two-sided p   = 7.7014e-03
+
+A_paper5  vs  C_adaptive
+  DM statistic  = +3.1819
+  Two-sided p   = 1.4631e-03
+
+A_paper5  vs  D_adaptive_plus_rule
+  DM statistic  = +3.1819
+  Two-sided p   = 1.4631e-03

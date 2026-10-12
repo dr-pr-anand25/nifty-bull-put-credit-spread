@@ -1,0 +1,49 @@
+
+======================================================================
+Paper 9 (Buying) — STATISTICAL SIGNIFICANCE TESTS
+======================================================================
+Input file:  /root/paper9/results/config_trades.csv
+Rows:        1166
+Date range:  2022-01-03 to 2026-06-23
+Span:        4.468 years
+Configs:     ['A_static', 'B_adaptive']
+
+======================================================================
+PER-CONFIGURATION STATISTICS
+======================================================================
+config                         n        mean         std    Sharpe    t-stat          p(2)             boot CI 95%
+A_static                     996     -414.11     8390.32   -0.6966   -1.5577    1.1932e-01         [-1.680, 0.174]
+B_adaptive                   170     -526.94     8737.89   -0.3516   -0.7863    4.3170e-01         [-1.408, 0.502]
+
+======================================================================
+BOOTSTRAP DISTRIBUTION PER CONFIGURATION
+======================================================================
+
+A_static:
+  Bootstrap mean Sharpe    : -0.7144
+  Bootstrap median Sharpe  : -0.6979
+  Fraction Sharpe > 0      : 0.0588
+  Fraction Sharpe > 1.0    : 0.0001
+
+B_adaptive:
+  Bootstrap mean Sharpe    : -0.3847
+  Bootstrap median Sharpe  : -0.3657
+  Fraction Sharpe > 0      : 0.2154
+  Fraction Sharpe > 1.0    : 0.0005
+
+======================================================================
+PAIRWISE SHARPE DIFFERENCE TESTS (bootstrap)
+======================================================================
+
+A_static  vs  B_adaptive
+  Observed Sharpe diff (base - other) = -0.3450
+  Bootstrap 95% CI for diff          = [-1.1832, +1.3714]
+  Two-sided p-value                  = 5.8700e-01
+
+======================================================================
+DIEBOLD-MARIANO TESTS (per-trade P&L difference)
+======================================================================
+
+A_static  vs  B_adaptive
+  DM statistic  = +1.1672
+  Two-sided p   = 2.4312e-01
