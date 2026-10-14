@@ -402,6 +402,9 @@ Third, test the strategy in a prolonged bear market. The 2019–2026 period incl
 
 Fourth, investigate dynamic hedge strikes based on VIX levels. During periods of elevated volatility, a closer strike may be optimal; during calm periods, a further strike may be preferred. This is a natural extension of the framework.
 
+**Design-space exploration.** Across eleven structural variants tested on top of the Config D baseline — alternative hedge structures (VIX-scaled hedge), profit-taking rules (50% and 75% of maximum profit), delta values from 0.20 to 0.35, VRP-based position sizing, regime-conditional entry, and a VIX call overlay — none produced a Sharpe improvement statistically distinguishable from the baseline's 2.835 at 95% confidence. The baseline's 95% bootstrap confidence interval is [2.17, 4.75], and every variant's confidence interval overlapped substantially with it. The single largest point-estimate improvement came from VRP-based sizing (Sharpe 3.32 versus 2.83), which is directly motivated by the program's central thesis: the Volatility Risk Premium. However, the improvement is within statistical noise at this sample size. These results suggest that the Config D design sits at a local optimum within the NIFTY 50 options framework tested, and that further improvement is more likely to come from new data sources (actual option chain data rather than Black-Scholes with VIX) than from parametric tuning of the existing design.
+
+
 ---
 
 ## 6. Conclusion
